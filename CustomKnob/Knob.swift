@@ -183,7 +183,7 @@ public extension Knob {
             return layer
             }()
         
-        var pointerAngle: CGFloat = CGFloat(M_PI) * 11 / 8.0
+        var pointerAngle: CGFloat = -CGFloat(M_PI) * 11 / 8.0
         var pointerLength: CGFloat = 6 {
             didSet {
                 updateTrackShape()
