@@ -67,7 +67,7 @@ import QuartzCore
         layer.addSublayer(renderer.pointerLayer)
     }
     
-    required public init(coder aDecoder: NSCoder!) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         gestureRecognizer = RotationGestureRecognizer(target: self, action: "handleGesture:")
         addGestureRecognizer(gestureRecognizer)
@@ -276,7 +276,7 @@ private extension Knob {
             sendActionsForControlEvents(.ValueChanged)
         }
         else {
-            // inference didn't work for .Cancelled for some reason on Beta5
+            // inference didn't work for .Cancelled for some reason in Xcode 6.0.1
             if gesture.state == .Ended || gesture.state == UIGestureRecognizerState.Cancelled {
                 sendActionsForControlEvents(.ValueChanged)
             }
@@ -309,13 +309,13 @@ private extension Knob {
         }
         
         func calculateAngleToPoint(point: CGPoint) -> CGFloat {
-            let centerOffset = CGPoint(x: point.x - CGRectGetMidX(view.bounds), y: point.y - CGRectGetMidY(view.bounds))
+            let centerOffset = CGPoint(x: point.x - CGRectGetMidX(view!.bounds), y: point.y - CGRectGetMidY(view!.bounds))
             return atan2(centerOffset.y, centerOffset.x)
         }
         
         // MARK: Lifecycle
         
-        override init(target: AnyObject!, action: Selector) {
+        override init(target: AnyObject, action: Selector) {
             super.init(target: target, action: action)
             maximumNumberOfTouches = 1
             minimumNumberOfTouches = 1

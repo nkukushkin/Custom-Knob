@@ -11,19 +11,8 @@
 		448DA3D419916000003B7962 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DA3D319916000003B7962 /* ViewController.swift */; };
 		448DA3D719916000003B7962 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 448DA3D519916000003B7962 /* Main.storyboard */; };
 		448DA3D919916001003B7962 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 448DA3D819916001003B7962 /* Images.xcassets */; };
-		448DA3E519916001003B7962 /* CustomKnobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DA3E419916001003B7962 /* CustomKnobTests.swift */; };
 		448DA3F119916903003B7962 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DA3F019916903003B7962 /* Knob.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		448DA3DF19916001003B7962 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 448DA3C419916000003B7962 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 448DA3CB19916000003B7962;
-			remoteInfo = CustomKnob;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		441DC710199948E40092CADF /* CustomKnob-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CustomKnob-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -33,21 +22,11 @@
 		448DA3D319916000003B7962 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		448DA3D619916000003B7962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		448DA3D819916001003B7962 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		448DA3DE19916001003B7962 /* CustomKnobTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomKnobTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		448DA3E319916001003B7962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		448DA3E419916001003B7962 /* CustomKnobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKnobTests.swift; sourceTree = "<group>"; };
 		448DA3F019916903003B7962 /* Knob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		448DA3C919916000003B7962 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		448DA3DB19916001003B7962 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -61,7 +40,6 @@
 			isa = PBXGroup;
 			children = (
 				448DA3CE19916000003B7962 /* CustomKnob */,
-				448DA3E119916001003B7962 /* CustomKnobTests */,
 				448DA3CD19916000003B7962 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				448DA3CC19916000003B7962 /* CustomKnob.app */,
-				448DA3DE19916001003B7962 /* CustomKnobTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				448DA3F019916903003B7962 /* Knob.swift */,
-				448DA3D119916000003B7962 /* AppDelegate.swift */,
 				448DA3D319916000003B7962 /* ViewController.swift */,
 				448DA3D519916000003B7962 /* Main.storyboard */,
 				448DA3CF19916000003B7962 /* Supporting Files */,
@@ -90,26 +66,10 @@
 		448DA3CF19916000003B7962 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				448DA3D119916000003B7962 /* AppDelegate.swift */,
 				441DC710199948E40092CADF /* CustomKnob-Bridging-Header.h */,
 				448DA3D819916001003B7962 /* Images.xcassets */,
 				448DA3D019916000003B7962 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		448DA3E119916001003B7962 /* CustomKnobTests */ = {
-			isa = PBXGroup;
-			children = (
-				448DA3E419916001003B7962 /* CustomKnobTests.swift */,
-				448DA3E219916001003B7962 /* Supporting Files */,
-			);
-			path = CustomKnobTests;
-			sourceTree = "<group>";
-		};
-		448DA3E219916001003B7962 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				448DA3E319916001003B7962 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -134,24 +94,6 @@
 			productReference = 448DA3CC19916000003B7962 /* CustomKnob.app */;
 			productType = "com.apple.product-type.application";
 		};
-		448DA3DD19916001003B7962 /* CustomKnobTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 448DA3EB19916001003B7962 /* Build configuration list for PBXNativeTarget "CustomKnobTests" */;
-			buildPhases = (
-				448DA3DA19916001003B7962 /* Sources */,
-				448DA3DB19916001003B7962 /* Frameworks */,
-				448DA3DC19916001003B7962 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				448DA3E019916001003B7962 /* PBXTargetDependency */,
-			);
-			name = CustomKnobTests;
-			productName = CustomKnobTests;
-			productReference = 448DA3DE19916001003B7962 /* CustomKnobTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -163,10 +105,6 @@
 				TargetAttributes = {
 					448DA3CB19916000003B7962 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					448DA3DD19916001003B7962 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 448DA3CB19916000003B7962;
 					};
 				};
 			};
@@ -184,7 +122,6 @@
 			projectRoot = "";
 			targets = (
 				448DA3CB19916000003B7962 /* CustomKnob */,
-				448DA3DD19916001003B7962 /* CustomKnobTests */,
 			);
 		};
 /* End PBXProject section */
@@ -196,13 +133,6 @@
 			files = (
 				448DA3D719916000003B7962 /* Main.storyboard in Resources */,
 				448DA3D919916001003B7962 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		448DA3DC19916001003B7962 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,23 +149,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		448DA3DA19916001003B7962 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				448DA3E519916001003B7962 /* CustomKnobTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		448DA3E019916001003B7962 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 448DA3CB19916000003B7962 /* CustomKnob */;
-			targetProxy = 448DA3DF19916001003B7962 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		448DA3D519916000003B7962 /* Main.storyboard */ = {
@@ -353,40 +267,6 @@
 			};
 			name = Release;
 		};
-		448DA3EC19916001003B7962 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CustomKnobTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomKnob.app/CustomKnob";
-			};
-			name = Debug;
-		};
-		448DA3ED19916001003B7962 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CustomKnobTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomKnob.app/CustomKnob";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -404,15 +284,6 @@
 			buildConfigurations = (
 				448DA3E919916001003B7962 /* Debug */,
 				448DA3EA19916001003B7962 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		448DA3EB19916001003B7962 /* Build configuration list for PBXNativeTarget "CustomKnobTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				448DA3EC19916001003B7962 /* Debug */,
-				448DA3ED19916001003B7962 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
