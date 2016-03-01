@@ -12,7 +12,7 @@ import QuartzCore
 @IBDesignable public class Knob: UIControl {
     
     private let renderer = Renderer()
-    private let gestureRecognizer: RotationGestureRecognizer!
+    private var gestureRecognizer: RotationGestureRecognizer!
     
     // MARK: API
     
@@ -67,7 +67,7 @@ import QuartzCore
         layer.addSublayer(renderer.pointerLayer)
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         gestureRecognizer = RotationGestureRecognizer(target: self, action: "handleGesture:")
         addGestureRecognizer(gestureRecognizer)
@@ -141,7 +141,7 @@ public extension Knob {
     
     private class Renderer {
         
-        var color: UIColor = UIColor.blackColor() {
+        var color: UIColor = .blackColor() {
             didSet {
                 trackLayer.strokeColor = color.CGColor
                 pointerLayer.strokeColor = color.CGColor
@@ -164,12 +164,12 @@ public extension Knob {
             return layer
             }()
         
-        var startAngle: CGFloat = -CGFloat(M_PI) * 11 / 8.0 {
+        var startAngle = -CGFloat(M_PI) * 11 / 8.0 {
             didSet {
                 updateTrackShape()
             }
         }
-        var endAngle: CGFloat = CGFloat(M_PI) * 3 / 8.0 {
+        var endAngle = CGFloat(M_PI) * 3 / 8.0 {
             didSet {
                 updateTrackShape()
             }
@@ -183,7 +183,7 @@ public extension Knob {
             return layer
             }()
         
-        var pointerAngle: CGFloat = -CGFloat(M_PI) * 11 / 8.0
+        var pointerAngle = -CGFloat(M_PI) * 11 / 8.0
         var pointerLength: CGFloat = 6 {
             didSet {
                 updateTrackShape()
@@ -192,7 +192,7 @@ public extension Knob {
         }
         
         func setPointerAngle(angle: CGFloat, animated: Bool = false) {
-            CATransaction()
+            CATransaction.begin()
             CATransaction.setDisableActions(true)
             pointerLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
             if animated {
@@ -290,19 +290,19 @@ private extension Knob {
         var touchAngle: CGFloat = 0
         
         // MARK: UIGestureRecognizerSubclass
-        
-        override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+
+        private override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
             super.touchesBegan(touches, withEvent: event)
             updateTouchAngleWithTouches(touches)
         }
-        
-        override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+
+        private override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
             super.touchesMoved(touches, withEvent: event)
             updateTouchAngleWithTouches(touches)
         }
-        
+
         func updateTouchAngleWithTouches(touches: NSSet!) {
-            let touch = touches.anyObject() as UITouch
+            let touch = touches.anyObject() as! UITouch
             let touchPoint = touch.locationInView(view)
             
             touchAngle = calculateAngleToPoint(touchPoint)
@@ -315,7 +315,7 @@ private extension Knob {
         
         // MARK: Lifecycle
         
-        override init(target: AnyObject, action: Selector) {
+        override init(target: AnyObject?, action: Selector) {
             super.init(target: target, action: action)
             maximumNumberOfTouches = 1
             minimumNumberOfTouches = 1
@@ -329,13 +329,13 @@ private extension Knob {
     
     // MARK: Value/Angle conversion
     
-    func valueForAngle(angle: CGFloat) -> Float {
+    private func valueForAngle(angle: CGFloat) -> Float {
         let angleRange = Float(endAngle - startAngle)
         let valueRange = maximumValue - minimumValue
         return Float(angle - startAngle) / angleRange * valueRange + minimumValue
     }
     
-    func angleForValue(value: Float) -> CGFloat {
+    private func angleForValue(value: Float) -> CGFloat {
         let angleRange = endAngle - startAngle
         let valueRange = CGFloat(maximumValue - minimumValue)
         return CGFloat(self.value - minimumValue) / valueRange * angleRange + startAngle
