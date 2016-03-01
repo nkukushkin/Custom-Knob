@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442143461C864A520055B897 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 442143451C864A520055B897 /* Launch Screen.storyboard */; };
 		448DA3D219916000003B7962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DA3D119916000003B7962 /* AppDelegate.swift */; };
 		448DA3D419916000003B7962 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DA3D319916000003B7962 /* ViewController.swift */; };
 		448DA3D719916000003B7962 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 448DA3D519916000003B7962 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		441DC710199948E40092CADF /* CustomKnob-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CustomKnob-Bridging-Header.h"; sourceTree = "<group>"; };
+		442143451C864A520055B897 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		448DA3CC19916000003B7962 /* CustomKnob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomKnob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		448DA3D019916000003B7962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		448DA3D119916000003B7962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				448DA3D119916000003B7962 /* AppDelegate.swift */,
 				441DC710199948E40092CADF /* CustomKnob-Bridging-Header.h */,
+				442143451C864A520055B897 /* Launch Screen.storyboard */,
 				448DA3D819916001003B7962 /* Images.xcassets */,
 				448DA3D019916000003B7962 /* Info.plist */,
 			);
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				442143461C864A520055B897 /* Launch Screen.storyboard in Resources */,
 				448DA3D719916000003B7962 /* Main.storyboard in Resources */,
 				448DA3D919916001003B7962 /* Images.xcassets in Resources */,
 			);
@@ -250,6 +254,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CustomKnob/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nkukushkin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -265,6 +270,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CustomKnob/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nkukushkin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
