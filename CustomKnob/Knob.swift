@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Nikita Kukushkin. All rights reserved.
 //
 
+import UIKit
+import UIKit.UIGestureRecognizerSubclass
+
 @IBDesignable public class Knob: UIControl {
     
     private let renderer = Renderer()
@@ -280,8 +283,7 @@ private extension Knob {
         }
     }
     
-    // note the need of importing
-    // <UIKit/UIGestureRecognizerSubclass.h> in bridging header
+    // Note the need of importing UIKit.UIGestureRecognizerSubclass
     class RotationGestureRecognizer: UIPanGestureRecognizer {
         
         var touchAngle: CGFloat = 0

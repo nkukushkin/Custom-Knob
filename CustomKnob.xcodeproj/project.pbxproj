@@ -16,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		441DC710199948E40092CADF /* CustomKnob-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CustomKnob-Bridging-Header.h"; sourceTree = "<group>"; };
 		442143451C864A520055B897 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		448DA3CC19916000003B7962 /* CustomKnob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomKnob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		448DA3D019916000003B7962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,9 +56,9 @@
 		448DA3CE19916000003B7962 /* CustomKnob */ = {
 			isa = PBXGroup;
 			children = (
-				448DA3F019916903003B7962 /* Knob.swift */,
-				448DA3D319916000003B7962 /* ViewController.swift */,
 				448DA3D519916000003B7962 /* Main.storyboard */,
+				448DA3D319916000003B7962 /* ViewController.swift */,
+				448DA3F019916903003B7962 /* Knob.swift */,
 				448DA3CF19916000003B7962 /* Supporting Files */,
 			);
 			path = CustomKnob;
@@ -69,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				448DA3D119916000003B7962 /* AppDelegate.swift */,
-				441DC710199948E40092CADF /* CustomKnob-Bridging-Header.h */,
 				442143451C864A520055B897 /* Launch Screen.storyboard */,
 				448DA3D819916001003B7962 /* Images.xcassets */,
 				448DA3D019916000003B7962 /* Info.plist */,
@@ -258,7 +256,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nkukushkin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CustomKnob/CustomKnob-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -274,7 +271,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nkukushkin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CustomKnob/CustomKnob-Bridging-Header.h";
 			};
 			name = Release;
 		};
