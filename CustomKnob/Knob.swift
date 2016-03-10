@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 Nikita Kukushkin. All rights reserved.
 //
 
-import UIKit
-import QuartzCore
-
 @IBDesignable public class Knob: UIControl {
     
     private let renderer = Renderer()
