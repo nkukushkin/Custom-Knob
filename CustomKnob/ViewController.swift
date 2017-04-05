@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        customKnob.addTarget(self, action: "customKnobValueChanged:", forControlEvents: .ValueChanged)
+        customKnob.addTarget(self, action: #selector(customKnobValueChanged(_:)), for: .valueChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,22 +29,21 @@ class ViewController: UIViewController {
 
     // MARK: - Actions
     
-    func customKnobValueChanged(sender: Knob) {
+    func customKnobValueChanged(_ sender: Knob) {
         label.text = String(format: "%.2f", sender.value)
-        slider.setValue(sender.value, animated: animate.on)
+        slider.setValue(sender.value, animated: animate.isOn)
     }
     
-    @IBAction func sliderValueChanged(sender: UISlider) {
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
         label.text = String(format: "%.2f", sender.value)
-        customKnob.setValue(sender.value, animated: animate.on)
+        customKnob.setValue(value: sender.value, animated: animate.isOn)
     }
 
-    @IBAction func generateRandomValue(sender: UIButton) {
+    @IBAction func generateRandomValue(_ sender: UIButton) {
         let randomValue = (Float((arc4random()) % 101) / 100.0)
         label.text = String(format: "%.2f", randomValue)
-        slider.setValue(randomValue, animated: animate.on)
-        customKnob.setValue(randomValue, animated: animate.on)
+        slider.setValue(randomValue, animated: animate.isOn)
+        customKnob.setValue(value: randomValue, animated: animate.isOn)
     }
-
 }
 

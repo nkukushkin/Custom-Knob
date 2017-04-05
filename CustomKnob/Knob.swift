@@ -11,7 +11,7 @@ import UIKit.UIGestureRecognizerSubclass
 
 @IBDesignable public class Knob: UIControl {
     
-    private let renderer = Renderer()
+    fileprivate let renderer = Renderer()
     private var gestureRecognizer: RotationGestureRecognizer!
     
     // MARK: API
@@ -69,14 +69,14 @@ import UIKit.UIGestureRecognizerSubclass
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        gestureRecognizer = RotationGestureRecognizer(target: self, action: "handleGesture:")
+        gestureRecognizer = RotationGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
         addGestureRecognizer(gestureRecognizer)
         renderUI()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        gestureRecognizer = RotationGestureRecognizer(target: self, action: "handleGesture:")
+        gestureRecognizer = RotationGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
         addGestureRecognizer(gestureRecognizer)
         renderUI()
     }
@@ -139,12 +139,12 @@ public extension Knob {
     
     // MARK: Renderer
     
-    private class Renderer {
+    fileprivate class Renderer {
         
-        var color: UIColor = .blackColor() {
+        var color: UIColor = .black {
             didSet {
-                trackLayer.strokeColor = color.CGColor
-                pointerLayer.strokeColor = color.CGColor
+                trackLayer.strokeColor = color.cgColor
+                pointerLayer.strokeColor = color.cgColor
             }
         }
         var lineWidth: CGFloat = 2 {
@@ -160,16 +160,16 @@ public extension Knob {
         
         let trackLayer: CAShapeLayer = {
             var layer = CAShapeLayer.init()
-            layer.fillColor = UIColor.clearColor().CGColor
+            layer.fillColor = UIColor.clear.cgColor
             return layer
             }()
         
-        var startAngle = -CGFloat(M_PI) * 11 / 8.0 {
+        var startAngle = -CGFloat.pi * 11 / 8.0 {
             didSet {
                 updateTrackShape()
             }
         }
-        var endAngle = CGFloat(M_PI) * 3 / 8.0 {
+        var endAngle = CGFloat.pi * 3 / 8.0 {
             didSet {
                 updateTrackShape()
             }
@@ -179,11 +179,11 @@ public extension Knob {
         
         let pointerLayer: CAShapeLayer = {
             var layer = CAShapeLayer.init()
-            layer.fillColor = UIColor.clearColor().CGColor
+            layer.fillColor = UIColor.clear.cgColor
             return layer
             }()
         
-        var pointerAngle = -CGFloat(M_PI) * 11 / 8.0
+        var pointerAngle = -CGFloat.pi * 11 / 8.0
         var pointerLength: CGFloat = 6 {
             didSet {
                 updateTrackShape()
@@ -191,7 +191,7 @@ public extension Knob {
             }
         }
         
-        func setPointerAngle(angle: CGFloat, animated: Bool = false) {
+        func setPointerAngle(_ angle: CGFloat, animated: Bool = false) {
             CATransaction.begin()
             CATransaction.setDisableActions(true)
             pointerLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
@@ -203,7 +203,7 @@ public extension Knob {
                 animation.keyTimes = [0, 0.5, 1.0]
                 animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
                 
-                pointerLayer.addAnimation(animation, forKey: nil)
+                pointerLayer.add(animation, forKey: nil)
             }
             CATransaction.commit()
             pointerAngle = angle
@@ -217,18 +217,18 @@ public extension Knob {
             let radius = min(trackLayer.bounds.width, trackLayer.bounds.height) / 2 - offset
             let ring = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             
-            trackLayer.path = ring.CGPath
+            trackLayer.path = ring.cgPath
         }
         
         func updatePointerShape() {
             let pointer = UIBezierPath()
-            pointer.moveToPoint(CGPoint(x: pointerLayer.bounds.width - pointerLength - lineWidth/2, y: pointerLayer.bounds.height / 2))
-            pointer.addLineToPoint(CGPoint(x: pointerLayer.bounds.width, y: pointerLayer.bounds.height / 2))
+            pointer.move(to: CGPoint(x: pointerLayer.bounds.width - pointerLength - lineWidth/2, y: pointerLayer.bounds.height / 2))
+            pointer.addLine(to: CGPoint(x: pointerLayer.bounds.width, y: pointerLayer.bounds.height / 2))
             
-            pointerLayer.path = pointer.CGPath
+            pointerLayer.path = pointer.cgPath
         }
         
-        func updateWithBounds(bounds: CGRect) {
+        func updateWithBounds(_ bounds: CGRect) {
             trackLayer.bounds = bounds
             trackLayer.position = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
             updateTrackShape()
@@ -243,12 +243,11 @@ public extension Knob {
         init() {
             trackLayer.lineWidth = lineWidth
             pointerLayer.lineWidth = lineWidth
-            trackLayer.strokeColor = color.CGColor
-            pointerLayer.strokeColor = color.CGColor
+            trackLayer.strokeColor = color.cgColor
+            pointerLayer.strokeColor = color.cgColor
         }
         
     }
-    
 }
 
 // MARK: - Rotation Gesture Recogniser extension
@@ -257,28 +256,28 @@ private extension Knob {
     
     // note the use of dynamic, because calling
     // private swift selectors(@ gestureRec target:action:!) gives an exception
-    dynamic func handleGesture(gesture: RotationGestureRecognizer) {
-        let midPointAngle = (2 * CGFloat(M_PI) + startAngle - endAngle) / 2 + endAngle
+    dynamic func handleGesture(_ gesture: RotationGestureRecognizer) {
+        let midPointAngle = (2 * CGFloat.pi + startAngle - endAngle) / 2 + endAngle
         
         var boundedAngle = gesture.touchAngle
         if boundedAngle > midPointAngle {
-            boundedAngle -= CGFloat(2 * M_PI)
+            boundedAngle -= 2 * CGFloat.pi
         }
-        else if boundedAngle < (midPointAngle - CGFloat(2 * M_PI)) {
-            boundedAngle += CGFloat(2 * M_PI)
+        else if boundedAngle < (midPointAngle - 2 * CGFloat.pi) {
+            boundedAngle += 2 * CGFloat.pi
         }
         
         boundedAngle = min(endAngle, max(startAngle, boundedAngle))
         
-        setValue(valueForAngle(boundedAngle))
-        
+        setValue(value: valueForAngle(boundedAngle))
+
         if continuous {
-            sendActionsForControlEvents(.ValueChanged)
+            sendActions(for: .valueChanged)
         }
         else {
             // inference didn't work for .Cancelled for some reason in Xcode 6.0.1
-            if gesture.state == .Ended || gesture.state == UIGestureRecognizerState.Cancelled {
-                sendActionsForControlEvents(.ValueChanged)
+            if gesture.state == .ended || gesture.state == UIGestureRecognizerState.cancelled {
+                sendActions(for: .valueChanged)
             }
         }
     }
@@ -290,31 +289,31 @@ private extension Knob {
         
         // MARK: UIGestureRecognizerSubclass
 
-        private override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
-            super.touchesBegan(touches, withEvent: event)
+        fileprivate override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+            super.touchesBegan(touches, with: event)
             updateTouchAngleWithTouches(touches)
         }
 
-        private override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
-            super.touchesMoved(touches, withEvent: event)
+        fileprivate override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+            super.touchesMoved(touches, with: event)
             updateTouchAngleWithTouches(touches)
         }
 
-        func updateTouchAngleWithTouches(touches: NSSet!) {
-            let touch = touches.anyObject() as! UITouch
-            let touchPoint = touch.locationInView(view)
+        func updateTouchAngleWithTouches(_ touches: Set<UITouch>) {
+            let touch = touches.first!
+            let touchPoint = touch.location(in: view)
             
             touchAngle = calculateAngleToPoint(touchPoint)
         }
         
-        func calculateAngleToPoint(point: CGPoint) -> CGFloat {
-            let centerOffset = CGPoint(x: point.x - CGRectGetMidX(view!.bounds), y: point.y - CGRectGetMidY(view!.bounds))
+        func calculateAngleToPoint(_ point: CGPoint) -> CGFloat {
+            let centerOffset = CGPoint(x: point.x - view!.bounds.midX, y: point.y - view!.bounds.midY)
             return atan2(centerOffset.y, centerOffset.x)
         }
         
         // MARK: Lifecycle
         
-        override init(target: AnyObject?, action: Selector) {
+        override init(target: Any?, action: Selector?) {
             super.init(target: target, action: action)
             maximumNumberOfTouches = 1
             minimumNumberOfTouches = 1
@@ -328,16 +327,15 @@ private extension Knob {
     
     // MARK: Value/Angle conversion
     
-    private func valueForAngle(angle: CGFloat) -> Float {
+    func valueForAngle(_ angle: CGFloat) -> Float {
         let angleRange = Float(endAngle - startAngle)
         let valueRange = maximumValue - minimumValue
         return Float(angle - startAngle) / angleRange * valueRange + minimumValue
     }
     
-    private func angleForValue(value: Float) -> CGFloat {
+    func angleForValue(_ value: Float) -> CGFloat {
         let angleRange = endAngle - startAngle
         let valueRange = CGFloat(maximumValue - minimumValue)
         return CGFloat(self.value - minimumValue) / valueRange * angleRange + startAngle
     }
-
 }
